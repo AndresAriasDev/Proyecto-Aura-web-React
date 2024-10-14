@@ -1,0 +1,54 @@
+/*
+#363636 - Color Negro
+#CCCCCC - Color Gris
+#638A66 - Color Verde
+#A3BDA2 - Color Verde Claro
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Nunito', 'Montserrat', sans-serif;
+    color: #363636;
+  }
+
+  h1{
+    font-size: 34px;
+    font-family: poppins;
+    font-weight: 600;
+  }
+
+  h2{
+    font-size: 28px;
+    font-family: poppins;
+    font-weight: 600;
+  }
+  
+  h3{
+    font-size: 22px;
+    font-family: poppins;
+    font-weight: 600;
+  }
+
+  h4{
+    font-size: 18px;
+    font-family: poppins;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  p{
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: 400;
+  }
+
+  .text-color{
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #363636;
+  }

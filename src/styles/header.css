@@ -1,0 +1,108 @@
+/* Estilos del Header */
+/*
+#363636 - Color Negro
+#CCCCCC - Color Gris
+#638A66 - Color Verde
+#A3BDA2 - Color Verde Claro
+*/
+
+.header {
+    display: block;
+    max-width: 1600px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 10px 0px 4px 0px;
+   /* box-shadow: 0 8px 35px rgba(0, 0, 0, 0.2); */
+    border-bottom: 1px solid #cccccc;
+}
+
+  .container-wrap{
+    display: block;
+    width: 94%;
+    margin: auto;
+
+  }
+  
+ .header-left{
+    display: inline-block;
+    width: 160px;
+    vertical-align: middle;
+  }
+
+  .header-left .logo-aura{
+    width: 150px;
+  }
+
+/**************************************************/
+.header-center{
+    display: inline-block;
+    width: calc(100% - 160px - 220px);
+    text-align: right;
+    vertical-align: middle;
+}
+
+.search-input{
+    display: inline-block;
+    height: 42px;
+    padding: 4px 20px;
+    color: #363636;
+    border: 1px solid #cccccc;
+    vertical-align: middle;
+    width: 80%;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.search-button{
+    display: inline-block;
+    height: 42px;
+    padding: 8px 40px;
+    border: none;
+    font-size: 18px;
+    font-family: nunito;
+    text-transform: uppercase;
+    color: #363636;
+    vertical-align: middle;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+/**************************************************/
+
+.header-right{
+    display: inline-block;
+    width: 200px;
+    margin-left: 20px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.navbar {
+    display: block;
+    text-align: right;
+    padding: 4px 0px;
+}
+  
+.nav-link {
+    color: #363636;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: nunito;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    transition: color 0.3s;
+}
+  .nav-link:hover {
+    color: #0070e0;
+  }
+  
+  .btn-account{
+    padding: 10px 30px;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 6px;
+    background: #638A66;
+  }
