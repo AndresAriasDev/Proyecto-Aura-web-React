@@ -3,6 +3,7 @@ import estres from '../assets/images/estres.jpg';
 import ansiedad from '../assets/images/ansiedad.jpg';
 import agotamiento from '../assets/images/agotamiento.jpg';
 import atencion from '../assets/images/atencion.jpg';
+import TherapySearch from '../components/TherapySearch';
 import '../styles/homepage.css';  // Importar estilos específicos para la página
 
 function HomePage() {
@@ -11,9 +12,13 @@ function HomePage() {
       <section className="principal-section">
         <div className="section-wrap">
           <h4>EN AURA</h4>
-          <h1>Tu salud mental es <span className='text-color'>nuestra prioridad</span></h1>
+          <h1>Tu salud mental es nuestra prioridad</h1>
           <p>Creemos que cuidar de tu salud mental es esencial para alcanzar tu máximo potencial. Te ofrecemos herramientas y apoyo personalizado para gestionar el estrés, la ansiedad y los desafíos emocionales del día a día, permitiéndote mantener el equilibrio mientras logras tus objetivos académicos y personales.</p>
+          <div className="therapy-section">
+             <TherapySearch />
+          </div>
         </div>
+
       </section>
 
       <section className="modules-section">

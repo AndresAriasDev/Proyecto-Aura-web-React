@@ -1,0 +1,96 @@
+
+.therapy-section{
+    margin-top: 50px;
+}
+
+.filter-container {
+    display: block;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 96%;
+    margin: 0 auto;
+  }
+  
+  .therapy-options {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+  }
+  
+  .therapy-switch {
+    display: flex;
+    background-color: #cccccc;
+    border-radius: 30px;
+    overflow: hidden;
+    justify-content: initial;
+    width: 400px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+  
+  .therapy-option {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 16px;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .therapy-option.active {
+    color: white;
+  }
+  
+  .therapy-switch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #638A66;
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+  }
+  
+  .therapy-switch.online::before {
+    transform: translateX(0%);
+  }
+  
+  .therapy-switch.presencial::before {
+    transform: translateX(100%);
+  }
+  
+  .search-fields {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .search-input-services {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-button-services {
+    background-color: #638A66;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button-services:hover {
+    background-color: #4b7052;
+  }
+  
