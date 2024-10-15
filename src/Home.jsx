@@ -5,6 +5,8 @@ import BreathExercises from './pages/BreathExercises';
 import Yoga from './pages/Yoga';
 import Chatbot from './pages/Chatbot';
 import Homepage from './pages/Homepage';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 function Home() {
   return (
@@ -15,6 +17,8 @@ function Home() {
         <Route path="/breath" element={<BreathExercises />} />
         <Route path="/yoga" element={<Yoga />} />
         <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>

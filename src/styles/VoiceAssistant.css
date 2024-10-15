@@ -1,0 +1,27 @@
+.voice-assistant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #638a66;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #4b7052;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #333;
+  }
+  

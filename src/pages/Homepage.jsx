@@ -1,10 +1,14 @@
-import exito from '../assets/images/woman-with-raised-fists.jpg';
 import estres from '../assets/images/estres.jpg';
 import ansiedad from '../assets/images/ansiedad.jpg';
 import agotamiento from '../assets/images/agotamiento.jpg';
 import atencion from '../assets/images/atencion.jpg';
 import TherapySearch from '../components/TherapySearch';
+import VoiceAssistant from '../components/VoiceAssistant';
 import '../styles/homepage.css';  // Importar estilos específicos para la página
+import '../components/Login'
+import '../components/Signup'
+
+
 
 function HomePage() {
   return (
@@ -12,6 +16,7 @@ function HomePage() {
       <section className="principal-section">
         <div className="section-wrap">
           <h4>EN AURA</h4>
+          <VoiceAssistant />
           <h1>Tu salud mental es nuestra prioridad</h1>
           <p>Creemos que cuidar de tu salud mental es esencial para alcanzar tu máximo potencial. Te ofrecemos herramientas y apoyo personalizado para gestionar el estrés, la ansiedad y los desafíos emocionales del día a día, permitiéndote mantener el equilibrio mientras logras tus objetivos académicos y personales.</p>
           <div className="therapy-section">
