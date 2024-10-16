@@ -1,47 +1,104 @@
-import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseConfig'; 
 import '../styles/login.css'; 
+import { useState } from 'react';
+import { auth, db } from '../../firebaseConfig'; // Importa Firebase y Firestore
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword 
+} from 'firebase/auth';
+import { setDoc, doc } from 'firebase/firestore';
 
-function Login({ setUserId }) {  // Recibe setUserId como prop
+function Login() {
+  const [selectedForm, setSelectedForm] = useState('login'); // Estado para alternar entre login y registro
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleLogin = async (e) => {
+  const handleFormSwitch = (form) => {
+    setSelectedForm(form); // Alterna entre 'login' y 'register'
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log('Usuario logueado:', user);
+      if (selectedForm === 'register') {
+        // Registro de usuario con Firebase Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-      // Guardar el UID del usuario logueado
-      setUserId(user.uid); 
+        // Guardar información adicional del usuario en Firestore
+        await setDoc(doc(db, 'users', user.uid), {
+          name: name,
+          email: user.email,
+        });
+
+        console.log('Usuario registrado:', user);
+        setError('¡Usuario registrado con éxito!');
+      } else {
+        // Inicio de sesión con Firebase Authentication
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log('Usuario autenticado:', userCredential.user);
+        setError('¡Inicio de sesión exitoso!');
+      }
     } catch (error) {
+      console.error('Error:', error.message);
       setError(error.message);
     }
   };
 
   return (
-    <div className="login">
-      <h2>Iniciar Sesión</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+    <div className="login-container">
+      {/* Switch entre Login y Registro */}
+      <div className={`form-switch ${selectedForm}`}>
+        <button
+          className={`form-option ${selectedForm === 'login' ? 'active' : ''}`}
+          onClick={() => handleFormSwitch('login')}
+        >
+          Iniciar
+        </button>
+        <button
+          className={`form-option ${selectedForm === 'register' ? 'active' : ''}`}
+          onClick={() => handleFormSwitch('register')}
+        >
+          Registrarse
+        </button>
+      </div>
+
+      {/* Formulario dinámico */}
+      <form onSubmit={handleSubmit} className="login-form">
+        <h2>Bienvenido</h2>
+
+        {selectedForm === 'register' && (
+          <input 
+            type="text" 
+            placeholder="Nombres" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            required 
+          />
+        )}
+
+        <input 
+          type="email" 
+          placeholder="Correo" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          required 
         />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+        <input 
+          type="password" 
+          placeholder="Contraseña" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          required 
         />
-        <button type="submit">Entrar</button>
+
+        <button type="submit">
+          {selectedForm === 'login' ? 'Iniciar' : 'Registrar'}
+        </button>
+
+        <p style={{ color: 'red' }}>{error}</p>
+        <a href="#">¿Olvidaste tu contraseña?</a>
       </form>
     </div>
   );

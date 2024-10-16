@@ -1,38 +1,86 @@
-/* Login.css */
-.login {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    background-color: #fff;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #638a66;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #4b7052;
-  }
-  
+/* Contenedor general del formulario */
+.login-container {
+  width: 350px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/* Switch de Login y Registro */
+.form-switch {
+  display: flex;
+  background-color: #cccccc;
+  border-radius: 30px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo de los botones del switch */
+.form-option {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 15px 0;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: color 0.3s;
+  z-index: 1;
+}
+
+/* Resaltar el botón activo */
+.form-option.active {
+  color: white;
+}
+
+/* Fondo móvil del switch */
+.form-switch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #638A66;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+}
+
+/* Estado del switch para Login */
+.form-switch.login::before {
+  transform: translateX(0%);
+}
+
+/* Estado del switch para Registro */
+.form-switch.register::before {
+  transform: translateX(100%);
+}
+
+/* Estilos del formulario */
+.login-form input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #638A66;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-form a {
+  display: block;
+  margin-top: 10px;
+  color: #638A66;
+  text-decoration: none;
+}
