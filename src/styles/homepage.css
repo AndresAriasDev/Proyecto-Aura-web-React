@@ -33,6 +33,23 @@
     text-transform: uppercase;
 }
 
+.container-greeting{
+  display: block;
+  width: 96%;
+  left: 28px;
+  top: 46px;
+  position: absolute;
+  text-align: left;
+  margin: auto;
+}
+
+.user-greeting{
+  color: #363636;
+  font-family: nunito;
+  font-weight: 600;
+  font-size: 24px;
+}
+
 .section-wrap {
     display: block;
     width: 96%;
@@ -42,6 +59,9 @@
     border: 1px solid #cccccc;
     background: #ffffff3d;
 }
+
+
+
 
 /*MODULE SECTION STYLES*/
 

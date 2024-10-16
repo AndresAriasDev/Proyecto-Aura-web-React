@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import { getAuth } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig'; 
 import estres from '../assets/images/estres.jpg';
 import ansiedad from '../assets/images/ansiedad.jpg';
 import agotamiento from '../assets/images/agotamiento.jpg';
@@ -10,9 +14,45 @@ import '../components/Login'
 
 
 function HomePage() {
+  const [greeting, setGreeting] = useState('');
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+      // Obtener el nombre completo del usuario desde Firestore
+      const getUserData = async () => {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          setUserName(userData.name.split(' ')[0] || '' );
+        }
+      };
+
+      getUserData();
+
+      // Establecer saludo según la hora del día
+      const currentHour = new Date().getHours();
+      if (currentHour < 12) {
+        setGreeting('Buenos días');
+      } else if (currentHour >= 12 && currentHour < 18) {
+        setGreeting('Buenas tardes');
+      } else {
+        setGreeting('Buenas noches');
+      }
+    }else if(!user){
+      setGreeting('Bienvenido a Aura');
+    }
+  }, []);
+
   return (
     <main className="homepage">
       <section className="principal-section">
+          <div className='container-greeting'>
+          <span className='user-greeting'>{greeting}{userName && `, ${userName}`}</span>
+        </div>
         <div className="section-wrap">
           <h4>EN AURA</h4>
           <VoiceAssistant />
