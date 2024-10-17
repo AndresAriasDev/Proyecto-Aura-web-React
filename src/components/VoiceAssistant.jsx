@@ -92,7 +92,7 @@ function VoiceAssistant() {
         body: JSON.stringify({
           model: 'gpt-3.5-turbo',
           messages: [
-            { role: 'system', content: `Asistente ID: ${assistantID} | Eres un asistente emocional...` },
+            { role: 'system', content: `Asistente ID: ${assistantID} | Responde solo preguntas relacionadas con salud mental y bienestar emocional. Si recibes una pregunta fuera de estos temas, responde que no estás capacitado para responder preguntas sobre otros temas.` },
             { role: 'user', content: message },
           ],
           max_tokens: 80,

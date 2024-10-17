@@ -4,7 +4,8 @@ import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
 import BreathExercises from './pages/BreathExercises';
 import Yoga from './pages/Yoga';
-import Chatbot from './pages/Chatbot';
+import Chatbot from './components/ChatBot';
+import ChatBotIcon from './components/ChatbotIcon';
 import Homepage from './pages/Homepage';
 import Login from './components/Login';
 
@@ -17,6 +18,7 @@ function Home() {
         <Route path="/breath" element={<BreathExercises />} />
         <Route path="/yoga" element={<Yoga />} />
         <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/chatboticon" element={<ChatBotIcon />} />
         <Route path="/login" element={<Login />} />
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/login" element={<Login />} />
