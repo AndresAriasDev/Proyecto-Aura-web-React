@@ -16,36 +16,34 @@ import '../components/Login'
 function HomePage() {
   const [greeting, setGreeting] = useState('');
   const [userName, setUserName] = useState('');
-
+  
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
-
+  
+    // Establecer el saludo según la hora del día (una vez para ambos casos)
+    const currentHour = new Date().getHours();
+    if (currentHour < 12) {
+      setGreeting('Buenos días');
+    } else if (currentHour >= 12 && currentHour < 18) {
+      setGreeting('Buenas tardes');
+    } else {
+      setGreeting('Buenas noches');
+    }
+  
     if (user) {
       // Obtener el nombre completo del usuario desde Firestore
       const getUserData = async () => {
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          setUserName(userData.name.split(' ')[0] || '' );
+          setUserName(userData.name.split(' ')[0] || ''); // Tomar el primer nombre
         }
       };
-
       getUserData();
-
-      // Establecer saludo según la hora del día
-      const currentHour = new Date().getHours();
-      if (currentHour < 12) {
-        setGreeting('Buenos días');
-      } else if (currentHour >= 12 && currentHour < 18) {
-        setGreeting('Buenas tardes');
-      } else {
-        setGreeting('Buenas noches');
-      }
-    }else if(!user){
-      setGreeting('Bienvenido a Aura');
     }
   }, []);
+  
 
   return (
     <main className="homepage">

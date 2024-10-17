@@ -1,8 +1,24 @@
-import { Link } from 'react-router-dom';
-import '../styles/Header.css';  // Ajusta la ruta a la nueva ubicación
+import '../styles/Header.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 import logo from '../assets/images/Aura-logo-web-500px.png';
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleAccountClick = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    // Si el usuario está logueado, redirigir a UserProfile
+    if (user) {
+      navigate('/userprofile'); // Redirige a UserProfile.jsx
+    } else {
+      // Si no está logueado, redirigir al login
+      navigate('/login'); // Redirige a Login.jsx
+    }
+  };
+
   return (
     <header className="header">
       <div className="container-wrap">
@@ -20,8 +36,7 @@ function Header() {
             </div>
         </div>
         <div className="header-right">
-            <Link to="/account" className="nav-link btn-account">Cuenta
-            </Link>
+        <button onClick={handleAccountClick} className="btn-account">Cuenta</button>
         </div>
         <div className="container-nav-menu">
           <nav className="navbar">
