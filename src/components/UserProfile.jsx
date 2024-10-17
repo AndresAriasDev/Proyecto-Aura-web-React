@@ -1,54 +1,48 @@
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
+import { getAuth } from 'firebase/auth';
 import '../styles/userProfile.css';
 
-function UserProfile({ userId }) {
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+function UserProfile() {
+  const [userData, setUserData] = useState(null);  // Estado para los datos del usuario
+  const [userName, setUserName] = useState('');    // Estado para el primer nombre
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const docRef = doc(db, 'users', userId); // Referencia al documento del usuario
-        const docSnap = await getDoc(docRef);
+    const auth = getAuth();
+    const user = auth.currentUser;
 
-        if (docSnap.exists()) {
-          setUserData(docSnap.data());
-        } else {
-          setError('No se encontró el usuario.');
+    if (user) {
+      // Obtener los datos del usuario desde Firestore
+      const getUserData = async () => {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          setUserData(userData);  // Guardar los datos completos en el estado
+          setUserName(userData.name.split(' ')[0] || ''); // Tomar el primer nombre
         }
-      } catch (err) {
-        setError('Error al obtener los datos del usuario.');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+      };
+      getUserData();
+    }
+  }, []);
 
-    if (userId) fetchUserData(); // Ejecuta solo si existe el UID
-  }, [userId]);
-
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
+  if (!userData) return <p>Cargando...</p>;
 
   return (
     <div className="user-profile">
       <h2>Perfil del Usuario</h2>
-      {userData && (
-        <div className="profile-info">
-          <img
-            src={userData.fotoPerfil || 'https://via.placeholder.com/150'}
-            alt="Foto de perfil"
-            className="profile-avatar"
-          />
-          <p><strong>Nombre:</strong> {userData.nombre}</p>
-          <p><strong>Email:</strong> {userData.email}</p>
-          <p><strong>Estado Emocional:</strong> {userData.emotionalStatus || 'No especificado'}</p>
-          <p><strong>Es Premium:</strong> {userData.isPremium ? 'Sí' : 'No'}</p>
-        </div>
-      )}
+      <div className="profile-info">
+        <img
+          src={userData.fotoPerfil || 'https://via.placeholder.com/150'}
+          alt="Foto de perfil"
+          className="profile-avatar"
+        />
+        <p><strong>Nombre:</strong> {userData.name}</p>
+        <p><strong>Primer nombre:</strong> {userName}</p>  {/* Mostrar el primer nombre */}
+        <p><strong>Email:</strong> {userData.email}</p>
+        <p><strong>Estado Emocional:</strong> {userData.emotionalStatus || 'No especificado'}</p>
+        <p><strong>Es Premium:</strong> {userData.isPremium ? 'Sí' : 'No'}</p>
+      </div>
     </div>
   );
 }

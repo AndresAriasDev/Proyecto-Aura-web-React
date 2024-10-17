@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 import Header from './components/Header';  // Importamos Header
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';

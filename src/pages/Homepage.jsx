@@ -9,7 +9,7 @@ import atencion from '../assets/images/atencion.jpg';
 import TherapySearch from '../components/TherapySearch';
 import VoiceAssistant from '../components/VoiceAssistant';
 import '../styles/homepage.css';  // Importar estilos específicos para la página
-import '../components/Login'
+import '../components/Login';
 
 
 
