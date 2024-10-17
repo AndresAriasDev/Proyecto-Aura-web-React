@@ -1,0 +1,9 @@
+[
+    {
+      "origin": ["http://localhost:8080", "https://auraentorno.granadaexplore.com/"],
+      "method": ["GET", "POST", "PUT"],
+      "maxAgeSeconds": 3600,
+      "responseHeader": ["Content-Type"]
+    }
+  ]
+  

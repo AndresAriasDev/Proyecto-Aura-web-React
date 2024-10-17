@@ -30,4 +30,17 @@
     margin-bottom: 20px;
     color: #333;
   }
+  .profile-avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  
+  .profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Esta propiedad asegura que la imagen se ajuste al contenedor sin deformarse */
+  }
   

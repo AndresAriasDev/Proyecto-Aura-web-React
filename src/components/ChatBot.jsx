@@ -20,7 +20,7 @@ function ChatBot() {
                 { role: 'system', content: `Asistente ID: ${assistantID} | Responde solo preguntas relacionadas con salud mental y bienestar emocional. Si recibes una pregunta fuera de estos temas, responde que no estás capacitado para responder preguntas sobre otros temas.` },
                 { role: 'user', content: userMessage },
             ],
-            max_tokens: 120,
+            max_tokens: 180,
           }),          
         });
   
@@ -36,8 +36,8 @@ function ChatBot() {
           let botResponse = data.choices[0].message.content.trim();
     
           // Truncar la respuesta si es muy larga
-          if (botResponse.length > 200) {
-            botResponse = botResponse.substring(0, 200) + '...';
+          if (botResponse.length > 400) {
+            botResponse = botResponse.substring(0, 400) + '...';
           }
     
           return botResponse;
