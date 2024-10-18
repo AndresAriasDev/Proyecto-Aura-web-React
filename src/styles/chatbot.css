@@ -1,13 +1,18 @@
 .chat-icon {
-    position: fixed;
-    bottom: 20px;  /* Espacio desde el fondo de la pantalla */
-    right: 20px;   /* Espacio desde la derecha de la pantalla */
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
   }
-  
+  .chat-icon img {
+    width: 60px !important;
+    height: auto;
+  }
+
+
   .chatbot-container {
     position: fixed;
     bottom: 80px;

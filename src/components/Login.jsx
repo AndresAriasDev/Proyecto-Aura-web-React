@@ -15,14 +15,13 @@ function Login() {
   const [error, setError] = useState('');
 
   const handleFormSwitch = (form) => {
-    setSelectedForm(form); // Alterna entre 'login' y 'register'
+    setSelectedForm(form);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (selectedForm === 'register') {
-        // Registro de usuario con Firebase Authentication
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 

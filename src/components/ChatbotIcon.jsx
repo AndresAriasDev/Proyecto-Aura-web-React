@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import chatBotImg from '../assets/images/icon-chat-bot.png';
 import ChatBot from '../components/ChatBot';  // Asegúrate de importar el componente del chatbot
 
 function ChatBotIcon() {
@@ -22,7 +23,7 @@ function ChatBotIcon() {
   return (
     <>
       <div className="chat-icon" onClick={handleChatClick}>
-        <img src="chat-icon.png" alt="Chat" />
+      <img src={chatBotImg} alt="Icono del chatbot" className='chat-bot-icon' />
       </div>
       
       {/* Si el chat está abierto, mostramos el componente ChatBot */}

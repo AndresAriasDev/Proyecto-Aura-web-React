@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig'; 
-import estres from '../assets/images/estres.jpg';
-import ansiedad from '../assets/images/ansiedad.jpg';
-import agotamiento from '../assets/images/agotamiento.jpg';
-import atencion from '../assets/images/atencion.jpg';
+import estres from '../assets/images/imagen-estudiante-estres.jpg';
+import ansiedad from '../assets/images/imagen-mujer-con-ansiedad.jpg';
+import agotamiento from '../assets/images/imagen-mujer-agotada.jpg';
+import atencion from '../assets/images/imagen-mujer-hombre-atencion-medica.jpg';
 import TherapySearch from '../components/TherapySearch';
 import VoiceAssistant from '../components/VoiceAssistant';
 import '../styles/homepage.css';  // Importar estilos específicos para la página
